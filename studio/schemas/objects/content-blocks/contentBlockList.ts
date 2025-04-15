@@ -1,5 +1,4 @@
 import { defineField, InsertMenuOptions } from 'sanity';
-import featureGrid from './featureGrid';
 
 const contentBlocks = [
   {
@@ -61,8 +60,7 @@ const contentBlocks = [
   },
   {
     type: 'downloadsSection',
-  },
-  featureGrid,
+  }
 ];
 
 const pdpSections = [
@@ -108,15 +106,12 @@ export default defineField({
   },
 });
 
-export const contentBlockSections = () => ({
-  name: 'contentBlocks',
-  title: 'Content Blocks',
-  type: 'array',
-  of: [
-    ...contentBlocks,
-    featureGrid,
-  ],
-});
+export function contentBlockSections(name = 'contentBlocks') {
+  return defineField({
+    name,
+    type: 'contentBlocks',
+  });
+}
 
 export const productSections = defineField({
   title: 'Sections',
