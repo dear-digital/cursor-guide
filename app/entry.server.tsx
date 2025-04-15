@@ -1,140 +1,125 @@
-/**
- * By default, Remix will handle generating the HTTP Response for you.
- * You are free to delete this file if you'd like to, but if you ever want it revealed again, you can run `npx remix reveal` ✨
- * For more information, see https://remix.run/file-conventions/entry.server
- */
+import type {AppLoadContext, EntryContext} from '@shopify/remix-oxygen';
 
-import { PassThrough } from "node:stream";
+import {RemixServer} from '@remix-run/react';
+import {createContentSecurityPolicy} from '@shopify/hydrogen';
+import {isbot} from 'isbot';
+import {renderToReadableStream} from 'react-dom/server';
 
-import type { AppLoadContext, EntryContext } from "@remix-run/node";
-import { createReadableStreamFromReadable } from "@remix-run/node";
-import { RemixServer } from "@remix-run/react";
-import { isbot } from "isbot";
-import { renderToPipeableStream } from "react-dom/server";
-
-const ABORT_DELAY = 5_000;
-
-export default function handleRequest(
+export default async function handleRequest(
   request: Request,
   responseStatusCode: number,
   responseHeaders: Headers,
   remixContext: EntryContext,
-  // This is ignored so we can keep it in the template for visibility.  Feel
-  // free to delete this parameter in your app if you're not using it!
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  loadContext: AppLoadContext
+  context: AppLoadContext,
 ) {
-  return isbot(request.headers.get("user-agent") || "")
-    ? handleBotRequest(
-        request,
-        responseStatusCode,
-        responseHeaders,
-        remixContext
-      )
-    : handleBrowserRequest(
-        request,
-        responseStatusCode,
-        responseHeaders,
-        remixContext
-      );
-}
+  const {header, nonce, NonceProvider} = createContentSecurityPolicy({
+    shop: {
+      checkoutDomain: context.env.PUBLIC_CHECKOUT_DOMAIN,
+      storeDomain: context.env.PUBLIC_STORE_DOMAIN,
+    },
+    ...createCspHeaders(),
+  });
 
-function handleBotRequest(
-  request: Request,
-  responseStatusCode: number,
-  responseHeaders: Headers,
-  remixContext: EntryContext
-) {
-  return new Promise((resolve, reject) => {
-    let shellRendered = false;
-    const { pipe, abort } = renderToPipeableStream(
-      <RemixServer
-        context={remixContext}
-        url={request.url}
-        abortDelay={ABORT_DELAY}
-      />,
-      {
-        onAllReady() {
-          shellRendered = true;
-          const body = new PassThrough();
-          const stream = createReadableStreamFromReadable(body);
+  const body = await renderToReadableStream(
+    <NonceProvider>
+      <RemixServer context={remixContext} url={request.url} />
+    </NonceProvider>,
+    {
+      nonce,
+      onError(error) {
+        // eslint-disable-next-line no-console
+        console.error(error);
+        responseStatusCode = 500;
+      },
+      signal: request.signal,
+    },
+  );
 
-          responseHeaders.set("Content-Type", "text/html");
+  if (isbot(request.headers.get('user-agent'))) {
+    await body.allReady;
+  }
 
-          resolve(
-            new Response(stream, {
-              headers: responseHeaders,
-              status: responseStatusCode,
-            })
-          );
+  responseHeaders.set('Content-Type', 'text/html');
 
-          pipe(body);
-        },
-        onShellError(error: unknown) {
-          reject(error);
-        },
-        onError(error: unknown) {
-          responseStatusCode = 500;
-          // Log streaming rendering errors from inside the shell.  Don't log
-          // errors encountered during initial shell rendering since they'll
-          // reject and get logged in handleDocumentRequest.
-          if (shellRendered) {
-            console.error(error);
-          }
-        },
-      }
-    );
+  // Set CSP headers only for non-preview environments
+  // to allow vercel preview feedback/comments feature
+  const VERCEL_ENV = getVercelEnv();
+  if (!VERCEL_ENV || VERCEL_ENV !== 'preview') {
+    responseHeaders.set('Content-Security-Policy', header);
+  }
 
-    setTimeout(abort, ABORT_DELAY);
+  return new Response(body, {
+    headers: responseHeaders,
+    status: responseStatusCode,
   });
 }
 
-function handleBrowserRequest(
-  request: Request,
-  responseStatusCode: number,
-  responseHeaders: Headers,
-  remixContext: EntryContext
-) {
-  return new Promise((resolve, reject) => {
-    let shellRendered = false;
-    const { pipe, abort } = renderToPipeableStream(
-      <RemixServer
-        context={remixContext}
-        url={request.url}
-        abortDelay={ABORT_DELAY}
-      />,
-      {
-        onShellReady() {
-          shellRendered = true;
-          const body = new PassThrough();
-          const stream = createReadableStreamFromReadable(body);
+export const createCspHeaders = () => {
+  // Default CSP headers, will be used as a base for all environments
+  const defaultsCSPHeaders = {
+    connectSrc: [
+      '*',
+      "'self'",
+      'https://*.google-analytics.com',
+      'https://*.analytics.google.com',
+      'https://*.googletagmanager.com',
+      'https://track.uppromote.com',
+      'https://cdn.uppromote.com',
+      'https://*.zdassets.com',
+      'https://*.zendesk.com',
+      'https://*.smooch.io'
+    ],
+    defaultSrc: [
+      'https://track.uppromote.com',
+		'https://cdn.uppromote.com',
+    ],
+    fontSrc: ['*.sanity.io', "'self'", 'localhost:*', '*'],
+    frameAncestors: ['localhost:*', '*.sanity.studio'],
+    frameSrc: ["'self'", 'https://youtu.be/', 'https://www.youtube.com/', 'https://www.googletagmanager.com/', 'https://cdn.shopify.com', 'https://*.zdassets.com', 'https://*.zendesk.com', 'https://*.smooch.io'],
+    imgSrc: [
+      '*.sanity.io',
+      'https://cdn.shopify.com',
+      "'self'",
+      'localhost:*',
+      'data:',
+      '*',
+      'https://*.google-analytics.com',
+      'https://*.googletagmanager.com',
+    ],
+    mediaSrc: ['*', "'self'"],
+    scriptSrc: [
+      "'self'",
+      'localhost:*',
+      'https://maps.googleapis.com/',
+      'https://cdn.shopify.com',
+      'https://cdn.jsdelivr.net/npm/@alma/widgets@3.x.x/dist/widgets.umd.js',
+      'https://*.googletagmanager.com',
+      'https://cdn.sufio.com/infoweb/scripts/vat.js',
+      'https://cdn-cookieyes.com/client_data/6a9f0b8e5e77148b9efa05bc/*.js',
+      'https://static.zdassets.com',
+      'https://api.smooch.io'
+    ],
+    styleSrc: [
+      '*',
+      "'self'",
+      'localhost:*',
+      'https://cdn.jsdelivr.net/npm/@alma/widgets@3.x.x/dist/widgets.min.css',
+    ]
+  };
 
-          responseHeaders.set("Content-Type", "text/html");
+  // For Vercel production environment white-list vitals.vercel-insights
+  const VERCEL_ENV = getVercelEnv();
+  if (VERCEL_ENV === 'production') {
+    defaultsCSPHeaders.connectSrc.push('https://vitals.vercel-insights.com');
+    defaultsCSPHeaders.imgSrc.push('blob:', 'data:');
+  }
 
-          resolve(
-            new Response(stream, {
-              headers: responseHeaders,
-              status: responseStatusCode,
-            })
-          );
+  return defaultsCSPHeaders;
+};
 
-          pipe(body);
-        },
-        onShellError(error: unknown) {
-          reject(error);
-        },
-        onError(error: unknown) {
-          responseStatusCode = 500;
-          // Log streaming rendering errors from inside the shell.  Don't log
-          // errors encountered during initial shell rendering since they'll
-          // reject and get logged in handleDocumentRequest.
-          if (shellRendered) {
-            console.error(error);
-          }
-        },
-      }
-    );
-
-    setTimeout(abort, ABORT_DELAY);
-  });
-}
+const getVercelEnv = () => {
+  if (typeof process !== 'undefined') {
+    return process.env.VERCEL_ENV;
+  }
+  return null;
+};

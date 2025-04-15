@@ -1,13 +1,28 @@
-import {defineCliConfig} from 'sanity/cli'
+import {defineCliConfig, getStudioEnvironmentVariables} from 'sanity/cli';
+
+const envDir = '../';
+// Load environment variables from the root of the project so Sanity CLI can use them
+getStudioEnvironmentVariables({
+  envFile: {
+    mode: 'development',
+    envDir,
+  },
+});
+
+const projectId = process.env.SANITY_STUDIO_PROJECT_ID!;
+const dataset = process.env.SANITY_STUDIO_DATASET!;
 
 export default defineCliConfig({
   api: {
-    projectId: 'fd7ln89k',
-    dataset: 'production'
+    projectId,
+    dataset,
   },
-  /**
-   * Enable auto-updates for studios.
-   * Learn more at https://www.sanity.io/docs/cli#auto-updates
-   */
-  autoUpdates: true,
-})
+  studioHost: 'vorwerk-cms',
+  vite: (config) => {
+    // Tell vite to load environment variables from the root of the project so they're available in the browser
+    // Only variables prefixed with SANITY_STUDIO_ will be available
+    config.envDir = envDir;
+
+    return config;
+  },
+});

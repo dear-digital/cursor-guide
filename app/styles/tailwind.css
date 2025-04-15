@@ -1,0 +1,142 @@
+@import '@vorwerk/fibre-react/style.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--heading-font-family), var(--heading-font-type);
+    letter-spacing: calc(var(--heading-letter-spacing) * 1px);
+    line-height: var(--heading-line-height);
+    text-transform: var(--heading-capitalize);
+    -webkit-font-smoothing: var(--heading-font-webkit-font-smoothing);
+    -moz-osx-font-smoothing: var(--heading-font-moz-osx-font-smoothing);
+  }
+
+  .headline-social-links {
+    padding-top: 3rem;
+  }
+
+  .headline-social-links ._1l2267a7 {
+    grid-column: span 12;
+    margin: auto;
+    width: 100%;
+  }
+
+  .headline-social-links ul {
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Inside the text editor the user can use bullet lists, but the preflight styles reset the list styles. */
+  .text-editor ul {
+    list-style: revert;
+    margin: revert;
+    padding: revert;
+  }
+
+  .text-editor h1 {
+    @apply text-4xl font-light leading-tight;
+    @screen lg {
+      @apply text-5xl leading-snug;
+    }
+    @screen xl {
+      @apply text-6xl leading-none;
+    }
+  }
+
+  .text-editor h2 {
+    @apply text-3xl font-light;
+    @screen lg {
+      @apply text-4xl leading-tight;
+    }
+    @screen xl {
+      @apply text-5xl leading-snug;
+    }
+  }
+
+  .text-editor h3 {
+    @apply text-2xl font-light leading-8;
+    @screen lg {
+      @apply text-3xl leading-9;
+    }
+    @screen xl {
+      @apply text-4xl leading-tight;
+    }
+  }
+  .text-editor h4 {
+    @apply text-xl font-light leading-6;
+    @screen lg {
+      @apply text-2xl leading-8;
+    }
+    @screen xl {
+      @apply text-3xl leading-9;
+    }
+  }
+
+  .text-section h2 strong {
+    @apply text-primary;
+  }
+
+  .text-editor h5 {
+    @apply text-lg font-light leading-6;
+    @screen lg {
+      @apply text-xl leading-6;
+    }
+    @screen xl {
+      @apply text-2xl leading-8;
+    }
+  }
+
+  .text-editor strong {
+    @apply font-bold;
+  }
+
+  .sticky-product-bar ._19xwol20 {
+    z-index: 999 !important;
+  }
+
+  .subline-text p {
+    @apply text-lg font-light leading-12;
+    @screen lg {
+      @apply text-xl;
+    }
+    @screen xl {
+      @apply text-2xl;
+    }
+  }
+
+  .text-section-content strong {
+    /* large text and padding */
+    @apply text-xl font-medium leading-6 mb-4;
+  }
+
+  .text-editor h6 {
+    @apply text-base font-light leading-5;
+    @screen lg {
+      @apply text-lg leading-6;
+    }
+    @screen xl {
+      @apply text-xl leading-6;
+    }
+  }
+}
+
+/* section */
+.section.bg- + .t-light-bg,
+.section.t-cold-bg + .t-cold-bg,
+.section.t-warm-bg + .t-warm-bg,
+.section.t-dark-bg + .t-dark-bg {
+  padding-top: 0 !important;
+}
+
+.swiper-slide {
+  position: relative; /* Ensures the pseudo-element positions relative to the slide */
+  overflow: hidden; /* Prevents content from spilling out of the slide */
+}

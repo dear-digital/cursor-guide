@@ -14,162 +14,2537 @@
 
 // Source: schema.json
 export type SanityImagePaletteSwatch = {
-  _type: 'sanity.imagePaletteSwatch'
-  background?: string
-  foreground?: string
-  population?: number
-  title?: string
-}
+  _type: 'sanity.imagePaletteSwatch';
+  background?: string;
+  foreground?: string;
+  population?: number;
+  title?: string;
+};
 
 export type SanityImagePalette = {
-  _type: 'sanity.imagePalette'
-  darkMuted?: SanityImagePaletteSwatch
-  lightVibrant?: SanityImagePaletteSwatch
-  darkVibrant?: SanityImagePaletteSwatch
-  vibrant?: SanityImagePaletteSwatch
-  dominant?: SanityImagePaletteSwatch
-  lightMuted?: SanityImagePaletteSwatch
-  muted?: SanityImagePaletteSwatch
-}
+  _type: 'sanity.imagePalette';
+  darkMuted?: SanityImagePaletteSwatch;
+  lightVibrant?: SanityImagePaletteSwatch;
+  darkVibrant?: SanityImagePaletteSwatch;
+  vibrant?: SanityImagePaletteSwatch;
+  dominant?: SanityImagePaletteSwatch;
+  lightMuted?: SanityImagePaletteSwatch;
+  muted?: SanityImagePaletteSwatch;
+};
 
 export type SanityImageDimensions = {
-  _type: 'sanity.imageDimensions'
-  height?: number
-  width?: number
-  aspectRatio?: number
-}
-
-export type SanityImageHotspot = {
-  _type: 'sanity.imageHotspot'
-  x?: number
-  y?: number
-  height?: number
-  width?: number
-}
-
-export type SanityImageCrop = {
-  _type: 'sanity.imageCrop'
-  top?: number
-  bottom?: number
-  left?: number
-  right?: number
-}
-
-export type SanityFileAsset = {
-  _id: string
-  _type: 'sanity.fileAsset'
-  _createdAt: string
-  _updatedAt: string
-  _rev: string
-  originalFilename?: string
-  label?: string
-  title?: string
-  description?: string
-  altText?: string
-  sha1hash?: string
-  extension?: string
-  mimeType?: string
-  size?: number
-  assetId?: string
-  uploadId?: string
-  path?: string
-  url?: string
-  source?: SanityAssetSourceData
-}
-
-export type SanityImageAsset = {
-  _id: string
-  _type: 'sanity.imageAsset'
-  _createdAt: string
-  _updatedAt: string
-  _rev: string
-  originalFilename?: string
-  label?: string
-  title?: string
-  description?: string
-  altText?: string
-  sha1hash?: string
-  extension?: string
-  mimeType?: string
-  size?: number
-  assetId?: string
-  uploadId?: string
-  path?: string
-  url?: string
-  metadata?: SanityImageMetadata
-  source?: SanityAssetSourceData
-}
-
-export type SanityImageMetadata = {
-  _type: 'sanity.imageMetadata'
-  location?: Geopoint
-  dimensions?: SanityImageDimensions
-  palette?: SanityImagePalette
-  lqip?: string
-  blurHash?: string
-  hasAlpha?: boolean
-  isOpaque?: boolean
-}
+  _type: 'sanity.imageDimensions';
+  height?: number;
+  width?: number;
+  aspectRatio?: number;
+};
 
 export type Geopoint = {
-  _type: 'geopoint'
-  lat?: number
-  lng?: number
-  alt?: number
-}
+  _type: 'geopoint';
+  lat?: number;
+  lng?: number;
+  alt?: number;
+};
 
-export type Slug = {
-  _type: 'slug'
-  current?: string
-  source?: string
-}
+export type ProductVariant = {
+  _id: string;
+  _type: 'productVariant';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  hidden?: string;
+  titleProxy?: string;
+  store?: ShopifyProductVariant;
+};
 
-export type SanityAssetSourceData = {
-  _type: 'sanity.assetSourceData'
-  name?: string
-  id?: string
-  url?: string
-}
+export type ThemeContent = {
+  _id: string;
+  _type: 'themeContent';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  account?: {
+    welcome?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    welcomeToYourAccount?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    accountDetails?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    signOut?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    orderHistory?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    noOrdersMessage?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    startShopping?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    orderDetail?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    returnToAccount?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    orderNumber?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    placedOn?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    product?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    price?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    quantity?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    total?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    subtotal?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    discounts?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    discountsOff?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    tax?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    shippingAddress?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    noShippingAddress?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    status?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    updateYourProfile?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    firstName?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    lastName?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    company?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    addressLine1?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    addressLine2?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    city?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    stateProvince?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    postalCode?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    country?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    phone?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    defaultAddress?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    saving?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    save?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    cancel?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    addName?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    addAddress?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    editAddress?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    addressBook?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    noAddress?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    default?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    edit?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    remove?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    profile?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    name?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    phoneNumber?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    emailAddress?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    orderId?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    orderDate?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    fulfillmentStatus?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    viewDetails?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    orderStatusCancelled?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    orderStatusError?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    orderStatusFailure?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    orderStatusOpen?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    orderStatusPending?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    orderStatusSuccess?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+  };
+  cart?: {
+    heading?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    proceedToCheckout?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    orderSummary?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    subtotal?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    discounts?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    applyDiscount?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    discountCode?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    remove?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    quantity?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    continueShopping?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    emptyMessage?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+  };
+  collection?: {
+    sortBy?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    sortFeatured?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    sortLowHigh?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    sortHighLow?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    sortBestSelling?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    sortNewest?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    filterAndSort?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    from?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    to?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    filterInStock?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    filterOutOfStock?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    viewAll?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    clearFilters?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    clear?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    apply?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    loading?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    loadPrevious?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    loadMoreProducts?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    noProductFound?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    noCollectionFound?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+  };
+  product?: {
+    addToCart?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    sale?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    soldOut?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    quantitySelector?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+  };
+  error?: {
+    pageNotFound?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    serverError?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    sectionError?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    reloadPage?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    missingAddressId?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    addressCreation?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+  };
+};
 
-export type RichText = Array<{
-  children?: Array<{
-    marks?: Array<string>
-    text?: string
-    _type: 'span'
-    _key: string
-  }>
-  style?: 'normal' | 'h2' | 'h3' | 'h4' | 'blockquote'
-  listItem?: 'bullet' | 'number'
-  markDefs?: Array<{
-    href?: string
-    _type: 'link'
-    _key: string
-  }>
-  level?: number
-  _type: 'block'
-  _key: string
-}>
+export type Settings = {
+  _id: string;
+  _type: 'settings';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  siteName?: string;
+  siteDescription?: string;
+  logo?: {
+    asset?: {
+      _ref: string;
+      _type: 'reference';
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: 'image';
+  };
+  favicon?: {
+    asset?: {
+      _ref: string;
+      _type: 'reference';
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: 'image';
+  };
+  socialSharingImagePreview?: {
+    asset?: {
+      _ref: string;
+      _type: 'reference';
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: 'image';
+  };
+  spaceBetweenTemplateSections?: number;
+  buttonsBorder?: {
+    thickness?: number;
+    opacity?: number;
+    cornerRadius?: number;
+  };
+  buttonsShadow?: {
+    opacity?: number;
+    horizontalOffset?: number;
+    verticalOffset?: number;
+    blur?: number;
+  };
+  inputsBorder?: {
+    thickness?: number;
+    opacity?: number;
+    cornerRadius?: number;
+  };
+  inputsShadow?: {
+    opacity?: number;
+    horizontalOffset?: number;
+    verticalOffset?: number;
+    blur?: number;
+  };
+  productCards?: {
+    style?: 'standard' | 'card';
+    imageAspectRatio?: 'square' | 'video' | 'auto';
+    textAlignment?: 'left' | 'center' | 'right';
+    border?: {
+      thickness?: number;
+      opacity?: number;
+      cornerRadius?: number;
+    };
+    shadow?: {
+      opacity?: number;
+      horizontalOffset?: number;
+      verticalOffset?: number;
+      blur?: number;
+    };
+  };
+  collectionCards?: {
+    style?: 'standard' | 'card';
+    imageAspectRatio?: 'square' | 'video' | 'auto';
+    textAlignment?: 'left' | 'center' | 'right';
+    border?: {
+      thickness?: number;
+      opacity?: number;
+      cornerRadius?: number;
+    };
+    shadow?: {
+      opacity?: number;
+      horizontalOffset?: number;
+      verticalOffset?: number;
+      blur?: number;
+    };
+  };
+  blogCards?: {
+    style?: 'standard' | 'card';
+    imageAspectRatio?: 'square' | 'video' | 'auto';
+    textAlignment?: 'left' | 'center' | 'right';
+    border?: {
+      thickness?: number;
+      opacity?: number;
+      cornerRadius?: number;
+    };
+    shadow?: {
+      opacity?: number;
+      horizontalOffset?: number;
+      verticalOffset?: number;
+      blur?: number;
+    };
+  };
+  mediaBorder?: {
+    thickness?: number;
+    opacity?: number;
+    cornerRadius?: number;
+  };
+  mediaShadow?: {
+    opacity?: number;
+    horizontalOffset?: number;
+    verticalOffset?: number;
+    blur?: number;
+  };
+  dropdownsAndPopupsBorder?: {
+    thickness?: number;
+    opacity?: number;
+    cornerRadius?: number;
+  };
+  dropdownsAndPopupsShadow?: {
+    opacity?: number;
+    horizontalOffset?: number;
+    verticalOffset?: number;
+    blur?: number;
+  };
+  badgesPosition?: 'bottom_left' | 'bottom_right' | 'top_left' | 'top_right';
+  badgesCornerRadius?: number;
+  badgesSaleColorScheme?: {
+    _ref: string;
+    _type: 'reference';
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: 'colorScheme';
+  };
+  badgesSoldOutColorScheme?: {
+    _ref: string;
+    _type: 'reference';
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: 'colorScheme';
+  };
+  showCurrencyCodes?: boolean;
+  showTrailingZeros?: Array<string>;
+  cartCollection?: {
+    _ref: string;
+    _type: 'reference';
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: 'collection';
+  };
+  cartColorScheme?: {
+    _ref: string;
+    _type: 'reference';
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: 'colorScheme';
+  };
+  grid?: {
+    horizontalSpace?: number;
+    verticalSpace?: number;
+  };
+  facebook?: string;
+  instagram?: string;
+  tiktok?: string;
+  twitter?: string;
+  youtube?: string;
+  linkedin?: string;
+  snapchat?: string;
+  pinterest?: string;
+  tumblr?: string;
+  vimeo?: string;
+};
+
+export type Footer = {
+  _id: string;
+  _type: 'footer';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  sections?: Array<
+    | ({
+        _key: string;
+      } & ImageBannerSection)
+    | ({
+        _key: string;
+      } & FeaturedProductsSection)
+    | ({
+        _key: string;
+      } & FeaturedProductSection)
+    | ({
+        _key: string;
+      } & FeaturedCollections)
+    | ({
+        _key: string;
+      } & CarouselSection)
+    | ({
+        _key: string;
+      } & RichtextSection)
+    | ({
+        _key: string;
+      } & TextImageSection)
+    | ({
+        _key: string;
+      } & TextSection)
+  >;
+  footers?: Array<
+    {
+      _key: string;
+    } & SocialLinksOnly
+  >;
+};
+
+export type Header = {
+  _id: string;
+  _type: 'header';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  announcementBar?: Array<
+    {
+      _key: string;
+    } & InternationalizedArrayAnnouncementBarValue
+  >;
+  announcementBarColorScheme?: {
+    _ref: string;
+    _type: 'reference';
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: 'colorScheme';
+  };
+  autoRotateAnnouncements?: boolean;
+  menu?: Array<
+    {
+      _key: string;
+    } & InternationalizedArrayHeaderNavigationValue
+  >;
+  colorScheme?: {
+    _ref: string;
+    _type: 'reference';
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: 'colorScheme';
+  };
+  blur?: boolean;
+  sticky?: 'none' | 'onScrollUp' | 'always';
+  showSeparatorLine?: boolean;
+  padding?: Padding;
+  desktopLogoWidth?: number;
+};
+
+export type SocialLinksOnly = {
+  _type: 'socialLinksOnly';
+  copyright?: Array<
+    {
+      _key: string;
+    } & InternationalizedArrayStringValue
+  >;
+  settings?: SectionSettings;
+};
+
+export type FeaturedCollections = {
+  _type: 'featuredCollections';
+  collections?: Array<{
+    _ref: string;
+    _type: 'reference';
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: 'collection';
+  }>;
+  desktopColumns?: number;
+  settings?: SectionSettings;
+};
 
 export type TextSection = {
-  _type: 'textSection'
-  eyebrow?: string
-  title?: string
-  isHeadingOne?: boolean
-  richText?: RichText
-}
+  _type: 'textSection';
+  heading?: Array<
+    {
+      _key: string;
+    } & InternationalizedArrayStringValue
+  >;
+  textBlock?: {
+    text?: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: 'span';
+        _key: string;
+      }>;
+      style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+      listItem?: 'bullet' | 'number';
+      markDefs?: Array<{
+        href?: string;
+        _type: 'link';
+        _key: string;
+      }>;
+      level?: number;
+      _type: 'block';
+      _key: string;
+    }>;
+    size?: 'sm' | 'md' | 'lg' | 'xl';
+  };
+  linkBlock?: {
+    label?: string;
+    link?: {
+      internalLinkPartial?:
+        | {
+            _ref: string;
+            _type: 'reference';
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: 'home';
+          }
+        | {
+            _ref: string;
+            _type: 'reference';
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: 'page';
+          }
+        | {
+            _ref: string;
+            _type: 'reference';
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: 'product';
+          }
+        | {
+            _ref: string;
+            _type: 'reference';
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: 'collection';
+          }
+        | {
+            _ref: string;
+            _type: 'reference';
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: 'blogPost';
+          };
+      externalLink?: string;
+    };
+    style?: 'primary' | 'secondary' | 'tertiary';
+  };
+  desktopContentAlignment?: 'left' | 'center' | 'right';
+  contentAlignment?: 'left' | 'center' | 'right';
+  sectionSettings?: {
+    hide?: boolean;
+    colorScheme?: {
+      _ref: string;
+      _type: 'reference';
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: 'colorScheme';
+    };
+    padding?: Padding;
+    customCss?: Code;
+  };
+};
+
+export type TextImageSection = {
+  _type: 'textImageSection';
+  imageBaseBlock?: {
+    sm?: ImagePartial;
+    lg?: ImagePartial;
+  };
+  heading?: Array<
+    {
+      _key: string;
+    } & InternationalizedArrayStringValue
+  >;
+  textBlock?: {
+    text?: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: 'span';
+        _key: string;
+      }>;
+      style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+      listItem?: 'bullet' | 'number';
+      markDefs?: Array<{
+        href?: string;
+        _type: 'link';
+        _key: string;
+      }>;
+      level?: number;
+      _type: 'block';
+      _key: string;
+    }>;
+    size?: 'sm' | 'md' | 'lg' | 'xl';
+  };
+  linkBlock?: {
+    label?: string;
+    link?: {
+      internalLinkPartial?:
+        | {
+            _ref: string;
+            _type: 'reference';
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: 'home';
+          }
+        | {
+            _ref: string;
+            _type: 'reference';
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: 'page';
+          }
+        | {
+            _ref: string;
+            _type: 'reference';
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: 'product';
+          }
+        | {
+            _ref: string;
+            _type: 'reference';
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: 'collection';
+          }
+        | {
+            _ref: string;
+            _type: 'reference';
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: 'blogPost';
+          };
+      externalLink?: string;
+    };
+    style?: 'primary' | 'secondary' | 'tertiary';
+  };
+  desktopContentAlignment?: 'left' | 'center' | 'right';
+  contentAlignment?: 'left' | 'center' | 'right';
+  sectionSettings?: {
+    hide?: boolean;
+    colorScheme?: {
+      _ref: string;
+      _type: 'reference';
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: 'colorScheme';
+    };
+    padding?: Padding;
+    customCss?: Code;
+  };
+};
+
+export type CollectionProductGridSection = {
+  _type: 'collectionProductGridSection';
+  productsPerPage?: number;
+  desktopColumns?: number;
+  mobileColumns?: number;
+  enableFiltering?: boolean;
+  enableSorting?: boolean;
+  settings?: SectionSettings;
+};
+
+export type CollectionBannerSection = {
+  _type: 'collectionBannerSection';
+  showImage?: boolean;
+  showDescription?: boolean;
+  contentPosition?:
+    | 'top_left'
+    | 'top_center'
+    | 'top_right'
+    | 'middle_left'
+    | 'middle_center'
+    | 'middle_right'
+    | 'bottom_left'
+    | 'bottom_center'
+    | 'bottom_right';
+  contentAlignment?: 'left' | 'center' | 'right';
+  bannerHeight?: number;
+  overlayOpacity?: number;
+  settings?: SectionSettings;
+};
+
+export type RichtextSection = {
+  _type: 'richtextSection';
+  textBlock?: {
+    text?: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: 'span';
+        _key: string;
+      }>;
+      style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+      listItem?: 'bullet' | 'number';
+      markDefs?: Array<{
+        href?: string;
+        _type: 'link';
+        _key: string;
+      }>;
+      level?: number;
+      _type: 'block';
+      _key: string;
+    }>;
+    size?: 'sm' | 'md' | 'lg' | 'xl';
+  };
+  desktopContentAlignment?: 'left' | 'center' | 'right';
+  contentAlignment?: 'left' | 'center' | 'right';
+  maxWidth?: number;
+  sectionSettings?: {
+    hide?: boolean;
+    colorScheme?: {
+      _ref: string;
+      _type: 'reference';
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: 'colorScheme';
+    };
+    padding?: Padding;
+    customCss?: Code;
+  };
+};
+
+export type CarouselSection = {
+  _type: 'carouselSection';
+  title?: Array<
+    {
+      _key: string;
+    } & InternationalizedArrayStringValue
+  >;
+  pagination?: boolean;
+  arrows?: boolean;
+  autoplay?: boolean;
+  loop?: boolean;
+  slidesPerViewDesktop?: number;
+  slides?: Array<{
+    image?: {
+      asset?: {
+        _ref: string;
+        _type: 'reference';
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+      };
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      _type: 'image';
+    };
+    _type: 'slide';
+    _key: string;
+  }>;
+  settings?: SectionSettings;
+};
+
+export type RelatedProductsSection = {
+  _type: 'relatedProductsSection';
+  heading?: Array<
+    {
+      _key: string;
+    } & InternationalizedArrayStringValue
+  >;
+  maxProducts?: number;
+  desktopColumns?: number;
+  settings?: SectionSettings;
+};
+
+export type ProductInformationSection = {
+  _type: 'productInformationSection';
+  richtext?: Array<
+    {
+      _key: string;
+    } & InternationalizedArrayProductRichtextValue
+  >;
+  desktopMediaWidth?: 'small' | 'medium' | 'large';
+  desktopMediaPosition?: 'left' | 'right';
+  mediaAspectRatio?: 'square' | 'video' | 'auto';
+  settings?: SectionSettings;
+};
+
+export type FeaturedProductSection = {
+  _type: 'featuredProductSection';
+  product?: {
+    _ref: string;
+    _type: 'reference';
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: 'product';
+  };
+  richtext?: Array<
+    {
+      _key: string;
+    } & InternationalizedArrayProductRichtextValue
+  >;
+  mediaAspectRatio?: 'square' | 'video' | 'auto';
+  settings?: SectionSettings;
+};
+
+export type FeaturedProductsSection = {
+  _type: 'featuredProductsSection';
+  heading?: Array<
+    {
+      _key: string;
+    } & InternationalizedArrayStringValue
+  >;
+  collections?: Array<{
+    _ref: string;
+    _type: 'reference';
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: 'collection';
+  }>;
+  maxProducts?: number;
+  desktopColumns?: number;
+  viewAll?: boolean;
+  settings?: SectionSettings;
+};
+
+export type ImageBannerSection = {
+  _type: 'imageBannerSection';
+  content?: Array<
+    {
+      _key: string;
+    } & InternationalizedArrayBannerRichtextValue
+  >;
+  contentPosition?:
+    | 'top_left'
+    | 'top_center'
+    | 'top_right'
+    | 'middle_left'
+    | 'middle_center'
+    | 'middle_right'
+    | 'bottom_left'
+    | 'bottom_center'
+    | 'bottom_right';
+  contentAlignment?: 'left' | 'center' | 'right';
+  backgroundImage?: {
+    asset?: {
+      _ref: string;
+      _type: 'reference';
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: 'image';
+  };
+  bannerHeight?: number;
+  overlayOpacity?: number;
+  settings?: SectionSettings;
+};
+
+export type AspectRatios = 'square' | 'video' | 'auto';
+
+export type Richtext = Array<
+  | {
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: 'span';
+        _key: string;
+      }>;
+      style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote';
+      listItem?: 'bullet' | 'number';
+      markDefs?: Array<
+        | {
+            link?:
+              | {
+                  _ref: string;
+                  _type: 'reference';
+                  _weak?: boolean;
+                  [internalGroqTypeReferenceTo]?: 'home';
+                }
+              | {
+                  _ref: string;
+                  _type: 'reference';
+                  _weak?: boolean;
+                  [internalGroqTypeReferenceTo]?: 'page';
+                }
+              | {
+                  _ref: string;
+                  _type: 'reference';
+                  _weak?: boolean;
+                  [internalGroqTypeReferenceTo]?: 'product';
+                }
+              | {
+                  _ref: string;
+                  _type: 'reference';
+                  _weak?: boolean;
+                  [internalGroqTypeReferenceTo]?: 'collection';
+                }
+              | {
+                  _ref: string;
+                  _type: 'reference';
+                  _weak?: boolean;
+                  [internalGroqTypeReferenceTo]?: 'blogPost';
+                };
+            anchor?: string;
+            _type: 'internalLink';
+            _key: string;
+          }
+        | {
+            link?: string;
+            openInNewTab?: boolean;
+            _type: 'externalLink';
+            _key: string;
+          }
+      >;
+      level?: number;
+      _type: 'block';
+      _key: string;
+    }
+  | {
+      asset?: {
+        _ref: string;
+        _type: 'reference';
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+      };
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      maxWidth?: number;
+      alignment?: 'left' | 'center' | 'right';
+      _type: 'image';
+      _key: string;
+    }
+  | {
+      label?: string;
+      link?:
+        | {
+            _ref: string;
+            _type: 'reference';
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: 'home';
+          }
+        | {
+            _ref: string;
+            _type: 'reference';
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: 'page';
+          }
+        | {
+            _ref: string;
+            _type: 'reference';
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: 'product';
+          }
+        | {
+            _ref: string;
+            _type: 'reference';
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: 'collection';
+          }
+        | {
+            _ref: string;
+            _type: 'reference';
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: 'blogPost';
+          };
+      anchor?: string;
+      _type: 'button';
+      _key: string;
+    }
+>;
+
+export type TextPosition = 'left' | 'center' | 'right';
+
+export type ContentPosition =
+  | 'top_left'
+  | 'top_center'
+  | 'top_right'
+  | 'middle_left'
+  | 'middle_center'
+  | 'middle_right'
+  | 'bottom_left'
+  | 'bottom_center'
+  | 'bottom_right';
+
+export type CollectionRule = {
+  _type: 'collectionRule';
+  column?: string;
+  relation?: string;
+  condition?: string;
+};
+
+export type ShopifyProductVariant = {
+  _type: 'shopifyProductVariant';
+  createdAt?: string;
+  updatedAt?: string;
+  status?: 'active' | 'archived' | 'draft';
+  isDeleted?: boolean;
+  title?: string;
+  sku?: string;
+  id?: number;
+  gid?: string;
+  productId?: number;
+  productGid?: string;
+  price?: number;
+  compareAtPrice?: number;
+  inventory?: Inventory;
+  option1?: string;
+  option2?: string;
+  option3?: string;
+  previewImageUrl?: string;
+};
+
+export type ProxyString = string;
+
+export type PriceRange = {
+  _type: 'priceRange';
+  minVariantPrice?: number;
+  maxVariantPrice?: number;
+};
+
+export type PlaceholderString = string;
+
+export type Option = {
+  _type: 'option';
+  name?: string;
+  values?: Array<string>;
+};
+
+export type Inventory = {
+  _type: 'inventory';
+  isAvailable?: boolean;
+  management?: string;
+  policy?: string;
+};
+
+export type AnnouncementBar = Array<{
+  text?: string;
+  link?:
+    | {
+        _ref: string;
+        _type: 'reference';
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: 'home';
+      }
+    | {
+        _ref: string;
+        _type: 'reference';
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: 'page';
+      }
+    | {
+        _ref: string;
+        _type: 'reference';
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: 'product';
+      }
+    | {
+        _ref: string;
+        _type: 'reference';
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: 'collection';
+      }
+    | {
+        _ref: string;
+        _type: 'reference';
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: 'blogPost';
+      };
+  externalLink?: string;
+  openInNewTab?: boolean;
+  _type: 'announcement';
+  _key: string;
+}>;
+
+export type HeaderNavigation = Array<
+  | {
+      name?: string;
+      link?:
+        | {
+            _ref: string;
+            _type: 'reference';
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: 'home';
+          }
+        | {
+            _ref: string;
+            _type: 'reference';
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: 'page';
+          }
+        | {
+            _ref: string;
+            _type: 'reference';
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: 'product';
+          }
+        | {
+            _ref: string;
+            _type: 'reference';
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: 'collection';
+          }
+        | {
+            _ref: string;
+            _type: 'reference';
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: 'blogPost';
+          };
+      anchor?: string;
+      _type: 'internalLink';
+      _key: string;
+    }
+  | {
+      name?: string;
+      link?: string;
+      openInNewTab?: boolean;
+      _type: 'externalLink';
+      _key: string;
+    }
+  | {
+      name?: string;
+      link?:
+        | {
+            _ref: string;
+            _type: 'reference';
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: 'home';
+          }
+        | {
+            _ref: string;
+            _type: 'reference';
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: 'page';
+          }
+        | {
+            _ref: string;
+            _type: 'reference';
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: 'product';
+          }
+        | {
+            _ref: string;
+            _type: 'reference';
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: 'collection';
+          }
+        | {
+            _ref: string;
+            _type: 'reference';
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: 'blogPost';
+          };
+      childLinks?: Array<
+        | {
+            name?: string;
+            link?:
+              | {
+                  _ref: string;
+                  _type: 'reference';
+                  _weak?: boolean;
+                  [internalGroqTypeReferenceTo]?: 'home';
+                }
+              | {
+                  _ref: string;
+                  _type: 'reference';
+                  _weak?: boolean;
+                  [internalGroqTypeReferenceTo]?: 'page';
+                }
+              | {
+                  _ref: string;
+                  _type: 'reference';
+                  _weak?: boolean;
+                  [internalGroqTypeReferenceTo]?: 'product';
+                }
+              | {
+                  _ref: string;
+                  _type: 'reference';
+                  _weak?: boolean;
+                  [internalGroqTypeReferenceTo]?: 'collection';
+                }
+              | {
+                  _ref: string;
+                  _type: 'reference';
+                  _weak?: boolean;
+                  [internalGroqTypeReferenceTo]?: 'blogPost';
+                };
+            anchor?: string;
+            _type: 'internalLink';
+            _key: string;
+          }
+        | {
+            name?: string;
+            link?: string;
+            openInNewTab?: boolean;
+            _type: 'externalLink';
+            _key: string;
+          }
+      >;
+      _type: 'nestedNavigation';
+      _key: string;
+    }
+>;
+
+export type SectionSettings = {
+  _type: 'sectionSettings';
+  hide?: boolean;
+  colorScheme?: {
+    _ref: string;
+    _type: 'reference';
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: 'colorScheme';
+  };
+  padding?: Padding;
+  customCss?: Code;
+};
+
+export type BannerRichtext = Array<
+  | {
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: 'span';
+        _key: string;
+      }>;
+      style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+      listItem?: never;
+      markDefs?: null;
+      level?: number;
+      _type: 'block';
+      _key: string;
+    }
+  | {
+      label?: string;
+      link?:
+        | {
+            _ref: string;
+            _type: 'reference';
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: 'home';
+          }
+        | {
+            _ref: string;
+            _type: 'reference';
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: 'page';
+          }
+        | {
+            _ref: string;
+            _type: 'reference';
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: 'product';
+          }
+        | {
+            _ref: string;
+            _type: 'reference';
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: 'collection';
+          }
+        | {
+            _ref: string;
+            _type: 'reference';
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: 'blogPost';
+          };
+      anchor?: string;
+      _type: 'button';
+      _key: string;
+    }
+>;
+
+export type ProductRichtext = Array<
+  | {
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: 'span';
+        _key: string;
+      }>;
+      style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote';
+      listItem?: 'bullet' | 'number';
+      markDefs?: Array<
+        | {
+            link?:
+              | {
+                  _ref: string;
+                  _type: 'reference';
+                  _weak?: boolean;
+                  [internalGroqTypeReferenceTo]?: 'home';
+                }
+              | {
+                  _ref: string;
+                  _type: 'reference';
+                  _weak?: boolean;
+                  [internalGroqTypeReferenceTo]?: 'page';
+                }
+              | {
+                  _ref: string;
+                  _type: 'reference';
+                  _weak?: boolean;
+                  [internalGroqTypeReferenceTo]?: 'product';
+                }
+              | {
+                  _ref: string;
+                  _type: 'reference';
+                  _weak?: boolean;
+                  [internalGroqTypeReferenceTo]?: 'collection';
+                }
+              | {
+                  _ref: string;
+                  _type: 'reference';
+                  _weak?: boolean;
+                  [internalGroqTypeReferenceTo]?: 'blogPost';
+                };
+            anchor?: string;
+            _type: 'internalLink';
+            _key: string;
+          }
+        | {
+            link?: string;
+            openInNewTab?: boolean;
+            _type: 'externalLink';
+            _key: string;
+          }
+      >;
+      level?: number;
+      _type: 'block';
+      _key: string;
+    }
+  | {
+      titleProxy?: ProxyString;
+      _type: 'shopifyTitle';
+      _key: string;
+    }
+  | {
+      descriptionProxy?: ProxyString;
+      _type: 'shopifyDescription';
+      _key: string;
+    }
+  | {
+      priceProxy?: ProxyString;
+      _type: 'price';
+      _key: string;
+    }
+  | {
+      quantitySelector?: boolean;
+      shopPayButton?: boolean;
+      _type: 'addToCartButton';
+      _key: string;
+    }
+>;
+
+export type CollectionSections = Array<
+  | ({
+      _key: string;
+    } & CollectionBannerSection)
+  | ({
+      _key: string;
+    } & CollectionProductGridSection)
+  | ({
+      _key: string;
+    } & ImageBannerSection)
+  | ({
+      _key: string;
+    } & FeaturedProductsSection)
+  | ({
+      _key: string;
+    } & FeaturedProductSection)
+  | ({
+      _key: string;
+    } & FeaturedCollections)
+  | ({
+      _key: string;
+    } & CarouselSection)
+  | ({
+      _key: string;
+    } & RichtextSection)
+  | ({
+      _key: string;
+    } & TextImageSection)
+  | ({
+      _key: string;
+    } & TextSection)
+>;
+
+export type ProductSections = Array<
+  | ({
+      _key: string;
+    } & ProductInformationSection)
+  | ({
+      _key: string;
+    } & RelatedProductsSection)
+  | ({
+      _key: string;
+    } & ImageBannerSection)
+  | ({
+      _key: string;
+    } & FeaturedProductsSection)
+  | ({
+      _key: string;
+    } & FeaturedProductSection)
+  | ({
+      _key: string;
+    } & FeaturedCollections)
+  | ({
+      _key: string;
+    } & CarouselSection)
+  | ({
+      _key: string;
+    } & RichtextSection)
+  | ({
+      _key: string;
+    } & TextImageSection)
+  | ({
+      _key: string;
+    } & TextSection)
+>;
+
+export type Sections = Array<
+  | ({
+      _key: string;
+    } & ImageBannerSection)
+  | ({
+      _key: string;
+    } & FeaturedProductsSection)
+  | ({
+      _key: string;
+    } & FeaturedProductSection)
+  | ({
+      _key: string;
+    } & FeaturedCollections)
+  | ({
+      _key: string;
+    } & CarouselSection)
+  | ({
+      _key: string;
+    } & RichtextSection)
+  | ({
+      _key: string;
+    } & TextImageSection)
+  | ({
+      _key: string;
+    } & TextSection)
+>;
+
+export type Footers = Array<
+  {
+    _key: string;
+  } & SocialLinksOnly
+>;
+
+export type VideoBlock = {
+  _type: 'videoBlock';
+  sm?: VideoPartial;
+  lg?: VideoPartial;
+};
+
+export type Heading = Array<
+  {
+    _key: string;
+  } & InternationalizedArrayStringValue
+>;
+
+export type TextBlock = {
+  _type: 'textBlock';
+  text?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: 'span';
+      _key: string;
+    }>;
+    style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+    listItem?: 'bullet' | 'number';
+    markDefs?: Array<{
+      href?: string;
+      _type: 'link';
+      _key: string;
+    }>;
+    level?: number;
+    _type: 'block';
+    _key: string;
+  }>;
+  size?: 'sm' | 'md' | 'lg' | 'xl';
+};
+
+export type MaxWidth = number;
+
+export type LinkBlock = {
+  _type: 'linkBlock';
+  label?: string;
+  link?: {
+    internalLinkPartial?:
+      | {
+          _ref: string;
+          _type: 'reference';
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: 'home';
+        }
+      | {
+          _ref: string;
+          _type: 'reference';
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: 'page';
+        }
+      | {
+          _ref: string;
+          _type: 'reference';
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: 'product';
+        }
+      | {
+          _ref: string;
+          _type: 'reference';
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: 'collection';
+        }
+      | {
+          _ref: string;
+          _type: 'reference';
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: 'blogPost';
+        };
+    externalLink?: string;
+  };
+  style?: 'primary' | 'secondary' | 'tertiary';
+};
+
+export type ImageBaseBlock = {
+  _type: 'imageBaseBlock';
+  sm?: ImagePartial;
+  lg?: ImagePartial;
+};
+
+export type VideoPartial = {
+  _type: 'videoPartial';
+  asset?: {
+    asset?: {
+      _ref: string;
+      _type: 'reference';
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: 'sanity.fileAsset';
+    };
+    _type: 'file';
+  };
+  youTube?: string;
+  url?: string;
+  ratio?: RatioPartial;
+};
+
+export type TextAlignmentPartial = 'left' | 'center' | 'right';
+
+export type InternalLinkPartial =
+  | {
+      _ref: string;
+      _type: 'reference';
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: 'home';
+    }
+  | {
+      _ref: string;
+      _type: 'reference';
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: 'page';
+    }
+  | {
+      _ref: string;
+      _type: 'reference';
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: 'product';
+    }
+  | {
+      _ref: string;
+      _type: 'reference';
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: 'collection';
+    }
+  | {
+      _ref: string;
+      _type: 'reference';
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: 'blogPost';
+    };
+
+export type RatioPartial = {
+  _type: 'ratioPartial';
+  ratio?: '1:1' | '4:3' | '16:9' | '21:9';
+};
+
+export type InternationalizedArrayBannerRichtextValue = {
+  _type: 'internationalizedArrayBannerRichtextValue';
+  value?: BannerRichtext;
+};
+
+export type InternationalizedArrayRichtextValue = {
+  _type: 'internationalizedArrayRichtextValue';
+  value?: Richtext;
+};
+
+export type InternationalizedArrayProductRichtextValue = {
+  _type: 'internationalizedArrayProductRichtextValue';
+  value?: ProductRichtext;
+};
+
+export type InternationalizedArrayAnnouncementBarValue = {
+  _type: 'internationalizedArrayAnnouncementBarValue';
+  value?: AnnouncementBar;
+};
+
+export type InternationalizedArrayHeaderNavigationValue = {
+  _type: 'internationalizedArrayHeaderNavigationValue';
+  value?: HeaderNavigation;
+};
+
+export type InternationalizedArraySlugValue = {
+  _type: 'internationalizedArraySlugValue';
+  value?: Slug;
+};
+
+export type InternationalizedArrayTextValue = {
+  _type: 'internationalizedArrayTextValue';
+  value?: string;
+};
+
+export type InternationalizedArrayStringValue = {
+  _type: 'internationalizedArrayStringValue';
+  value?: string;
+};
+
+export type InternationalizedArrayBannerRichtext = Array<
+  {
+    _key: string;
+  } & InternationalizedArrayBannerRichtextValue
+>;
+
+export type InternationalizedArrayRichtext = Array<
+  {
+    _key: string;
+  } & InternationalizedArrayRichtextValue
+>;
+
+export type InternationalizedArrayProductRichtext = Array<
+  {
+    _key: string;
+  } & InternationalizedArrayProductRichtextValue
+>;
+
+export type InternationalizedArrayAnnouncementBar = Array<
+  {
+    _key: string;
+  } & InternationalizedArrayAnnouncementBarValue
+>;
+
+export type InternationalizedArrayHeaderNavigation = Array<
+  {
+    _key: string;
+  } & InternationalizedArrayHeaderNavigationValue
+>;
+
+export type Home = {
+  _id: string;
+  _type: 'home';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  sections?: Sections;
+  seo?: Seo;
+};
+
+export type Page = {
+  _id: string;
+  _type: 'page';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: Array<
+    {
+      _key: string;
+    } & InternationalizedArrayStringValue
+  >;
+  sections?: Sections;
+  seo?: Seo;
+  slug?: Slug;
+};
+
+export type Product = {
+  _id: string;
+  _type: 'product';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  hidden?: string;
+  template?: {
+    _ref: string;
+    _type: 'reference';
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: 'productTemplate';
+  };
+  titleProxy?: ProxyString;
+  slugProxy?: ProxyString;
+  store?: ShopifyProduct;
+};
+
+export type ShopifyProduct = {
+  _type: 'shopifyProduct';
+  createdAt?: string;
+  updatedAt?: string;
+  status?: 'active' | 'archived' | 'draft';
+  isDeleted?: boolean;
+  title?: string;
+  id?: number;
+  gid?: string;
+  slug?: Slug;
+  descriptionHtml?: string;
+  productType?: string;
+  vendor?: string;
+  tags?: string;
+  priceRange?: PriceRange;
+  previewImageUrl?: string;
+  options?: Array<
+    {
+      _key: string;
+    } & Option
+  >;
+  variants?: Array<{
+    _ref: string;
+    _type: 'reference';
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: 'productVariant';
+  }>;
+};
+
+export type ProductTemplate = {
+  _id: string;
+  _type: 'productTemplate';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  default?: boolean;
+  sections?: ProductSections;
+};
+
+export type Collection = {
+  _id: string;
+  _type: 'collection';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  hidden?: string;
+  titleProxy?: ProxyString;
+  slugProxy?: ProxyString;
+  template?: {
+    _ref: string;
+    _type: 'reference';
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: 'collectionTemplate';
+  };
+  store?: ShopifyCollection;
+};
+
+export type ShopifyCollection = {
+  _type: 'shopifyCollection';
+  createdAt?: string;
+  updatedAt?: string;
+  isDeleted?: boolean;
+  title?: string;
+  id?: number;
+  gid?: string;
+  slug?: Slug;
+  descriptionHtml?: string;
+  imageUrl?: string;
+  rules?: Array<
+    {
+      _key: string;
+    } & CollectionRule
+  >;
+  disjunctive?: boolean;
+  sortOrder?: string;
+};
+
+export type CollectionTemplate = {
+  _id: string;
+  _type: 'collectionTemplate';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  default?: boolean;
+  sections?: CollectionSections;
+};
+
+export type ImagePartial = {
+  _type: 'imagePartial';
+  asset?: {
+    asset?: {
+      _ref: string;
+      _type: 'reference';
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: 'image';
+  };
+  ratio?: RatioPartial;
+};
+
+export type Padding = {
+  _type: 'padding';
+  top?: number;
+  bottom?: number;
+};
+
+export type ColorScheme = {
+  _id: string;
+  _type: 'colorScheme';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  default?: boolean;
+  background?: ColorPicker;
+  foreground?: ColorPicker;
+  primary?: ColorPicker;
+  primaryForeground?: ColorPicker;
+  border?: ColorPicker;
+  card?: ColorPicker;
+  cardForeground?: ColorPicker;
+};
+
+export type BlogPost = {
+  _id: string;
+  _type: 'blogPost';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: Array<
+    {
+      _key: string;
+    } & InternationalizedArrayStringValue
+  >;
+  seo?: Seo;
+  slug?: Array<
+    {
+      _key: string;
+    } & InternationalizedArraySlugValue
+  >;
+};
+
+export type SanityImageCrop = {
+  _type: 'sanity.imageCrop';
+  top?: number;
+  bottom?: number;
+  left?: number;
+  right?: number;
+};
+
+export type SanityImageHotspot = {
+  _type: 'sanity.imageHotspot';
+  x?: number;
+  y?: number;
+  height?: number;
+  width?: number;
+};
+
+export type SanityImageAsset = {
+  _id: string;
+  _type: 'sanity.imageAsset';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  originalFilename?: string;
+  label?: string;
+  title?: string;
+  description?: string;
+  altText?: string;
+  sha1hash?: string;
+  extension?: string;
+  mimeType?: string;
+  size?: number;
+  assetId?: string;
+  uploadId?: string;
+  path?: string;
+  url?: string;
+  metadata?: SanityImageMetadata;
+  source?: SanityAssetSourceData;
+};
+
+export type SanityImageMetadata = {
+  _type: 'sanity.imageMetadata';
+  location?: Geopoint;
+  dimensions?: SanityImageDimensions;
+  palette?: SanityImagePalette;
+  lqip?: string;
+  blurHash?: string;
+  hasAlpha?: boolean;
+  isOpaque?: boolean;
+};
+
+export type Seo = {
+  _type: 'seo';
+  title?: Array<
+    {
+      _key: string;
+    } & InternationalizedArrayStringValue
+  >;
+  description?: Array<
+    {
+      _key: string;
+    } & InternationalizedArrayTextValue
+  >;
+  image?: {
+    asset?: {
+      _ref: string;
+      _type: 'reference';
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: 'image';
+  };
+};
+
+export type InternationalizedArraySlug = Array<
+  {
+    _key: string;
+  } & InternationalizedArraySlugValue
+>;
+
+export type InternationalizedArrayText = Array<
+  {
+    _key: string;
+  } & InternationalizedArrayTextValue
+>;
+
+export type InternationalizedArrayString = Array<
+  {
+    _key: string;
+  } & InternationalizedArrayStringValue
+>;
+
+export type MediaTag = {
+  _id: string;
+  _type: 'media.tag';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: Slug;
+};
+
+export type Slug = {
+  _type: 'slug';
+  current?: string;
+  source?: string;
+};
+
+export type Code = {
+  _type: 'code';
+  language?: string;
+  filename?: string;
+  code?: string;
+  highlightedLines?: Array<number>;
+};
+
+export type ColorPicker = {
+  _type: 'colorPicker';
+  hex?: string;
+  hsl?: {
+    h?: number;
+    s?: number;
+    l?: number;
+  };
+  rgb?: {
+    r?: number;
+    g?: number;
+    b?: number;
+  };
+};
+
+export type RangeSlider = number;
+
+export type FontCategory = {
+  _type: 'fontCategory';
+  fontName?: string;
+  fontType?: 'serif' | 'sans-serif';
+  antialiased?: boolean;
+  fontAssets?: Array<
+    {
+      _key: string;
+    } & FontAsset
+  >;
+};
+
+export type FontAsset = {
+  _type: 'fontAsset';
+  woff2?: {
+    asset?: {
+      _ref: string;
+      _type: 'reference';
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: 'sanity.fileAsset';
+    };
+    _type: 'file';
+  };
+  woff?: {
+    asset?: {
+      _ref: string;
+      _type: 'reference';
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: 'sanity.fileAsset';
+    };
+    _type: 'file';
+  };
+  ttf?: {
+    asset?: {
+      _ref: string;
+      _type: 'reference';
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: 'sanity.fileAsset';
+    };
+    _type: 'file';
+  };
+  fontStyle?: 'normal' | 'italic';
+  fontWeight?: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
+};
+
+export type Typography = {
+  _id: string;
+  _type: 'typography';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  heading?: {
+    font?: Array<
+      {
+        _key: string;
+      } & FontCategory
+    >;
+    capitalize?: boolean;
+    baseSize?: RangeSlider;
+    letterSpacing?: RangeSlider;
+    lineHeight?: RangeSlider;
+  };
+  body?: {
+    font?: Array<
+      {
+        _key: string;
+      } & FontCategory
+    >;
+    baseSize?: RangeSlider;
+    letterSpacing?: RangeSlider;
+    lineHeight?: RangeSlider;
+  };
+  extra?: {
+    font?: Array<
+      {
+        _key: string;
+      } & FontCategory
+    >;
+    capitalize?: boolean;
+    baseSize?: RangeSlider;
+    letterSpacing?: RangeSlider;
+    lineHeight?: RangeSlider;
+  };
+};
+
+export type SanityFileAsset = {
+  _id: string;
+  _type: 'sanity.fileAsset';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  originalFilename?: string;
+  label?: string;
+  title?: string;
+  description?: string;
+  altText?: string;
+  sha1hash?: string;
+  extension?: string;
+  mimeType?: string;
+  size?: number;
+  assetId?: string;
+  uploadId?: string;
+  path?: string;
+  url?: string;
+  source?: SanityAssetSourceData;
+};
+
+export type SanityAssetSourceData = {
+  _type: 'sanity.assetSourceData';
+  name?: string;
+  id?: string;
+  url?: string;
+};
 
 export type AllSanitySchemaTypes =
   | SanityImagePaletteSwatch
   | SanityImagePalette
   | SanityImageDimensions
-  | SanityImageHotspot
+  | Geopoint
+  | ProductVariant
+  | ThemeContent
+  | Settings
+  | Footer
+  | Header
+  | SocialLinksOnly
+  | FeaturedCollections
+  | TextSection
+  | TextImageSection
+  | CollectionProductGridSection
+  | CollectionBannerSection
+  | RichtextSection
+  | CarouselSection
+  | RelatedProductsSection
+  | ProductInformationSection
+  | FeaturedProductSection
+  | FeaturedProductsSection
+  | ImageBannerSection
+  | AspectRatios
+  | Richtext
+  | TextPosition
+  | ContentPosition
+  | CollectionRule
+  | ShopifyProductVariant
+  | ProxyString
+  | PriceRange
+  | PlaceholderString
+  | Option
+  | Inventory
+  | AnnouncementBar
+  | HeaderNavigation
+  | SectionSettings
+  | BannerRichtext
+  | ProductRichtext
+  | CollectionSections
+  | ProductSections
+  | Sections
+  | Footers
+  | VideoBlock
+  | Heading
+  | TextBlock
+  | MaxWidth
+  | LinkBlock
+  | ImageBaseBlock
+  | VideoPartial
+  | TextAlignmentPartial
+  | InternalLinkPartial
+  | RatioPartial
+  | InternationalizedArrayBannerRichtextValue
+  | InternationalizedArrayRichtextValue
+  | InternationalizedArrayProductRichtextValue
+  | InternationalizedArrayAnnouncementBarValue
+  | InternationalizedArrayHeaderNavigationValue
+  | InternationalizedArraySlugValue
+  | InternationalizedArrayTextValue
+  | InternationalizedArrayStringValue
+  | InternationalizedArrayBannerRichtext
+  | InternationalizedArrayRichtext
+  | InternationalizedArrayProductRichtext
+  | InternationalizedArrayAnnouncementBar
+  | InternationalizedArrayHeaderNavigation
+  | Home
+  | Page
+  | Product
+  | ShopifyProduct
+  | ProductTemplate
+  | Collection
+  | ShopifyCollection
+  | CollectionTemplate
+  | ImagePartial
+  | Padding
+  | ColorScheme
+  | BlogPost
   | SanityImageCrop
-  | SanityFileAsset
+  | SanityImageHotspot
   | SanityImageAsset
   | SanityImageMetadata
-  | Geopoint
+  | Seo
+  | InternationalizedArraySlug
+  | InternationalizedArrayText
+  | InternationalizedArrayString
+  | MediaTag
   | Slug
-  | SanityAssetSourceData
-  | RichText
-  | TextSection
-export declare const internalGroqTypeReferenceTo: unique symbol
+  | Code
+  | ColorPicker
+  | RangeSlider
+  | FontCategory
+  | FontAsset
+  | Typography
+  | SanityFileAsset
+  | SanityAssetSourceData;
+export declare const internalGroqTypeReferenceTo: unique symbol;

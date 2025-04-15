@@ -1,40 +1,45 @@
-# Welcome to Remix!
+<h1 align='center'>
+  Fluid
+</h1>
 
-- 📖 [Remix docs](https://remix.run/docs)
+![Fluid](https://github.com/frontvibe/fluid/assets/10447155/0a6b881f-7034-4002-8246-240ea1138d4b)
 
-## Development
+Fluid is a Hydrogen theme that let's you easily build Shopify headless storefronts by organizing your content with the Sanity CMS. Build your pages by assembling sections like you would do in a Shopify Liquid theme.
 
-Run the dev server:
+Using Sanity [Visual Editing](https://www.youtube.com/watch?v=0qheADLqhBs), content editors can update content in real-time and live preview.
 
-```shellscript
-npm run dev
-```
+Take a look at the demo [here](https://fluid-demo.frontvibe.com/).
 
-## Deployment
+## Documentation
 
-First, build your app for production:
+Visit [fluid.frontvibe.com](https://fluid.frontvibe.com/) to read the documentation.
 
-```sh
-npm run build
-```
+## Credits
 
-Then run the app in production mode:
+Fluid is built with amazing technologies:
 
-```sh
-npm start
-```
+- [Remix](https://remix.run/)
+- [Hydrogen](https://hydrogen.shopify.dev)
+- [React](https://reactjs.org/)
+- [Tailwind](https://tailwindcss.com/)
+- [Sanity](https://github.com/sanity-io/sanity)
+- [Framer Motion](https://www.framer.com/motion/)
+- [Radix](https://www.radix-ui.com/primitives/docs/overview/introduction)
+- [shadcn/ui](https://ui.shadcn.com/)
+- [Vaul](https://vaul.emilkowal.ski/)
+- [cva](https://cva.style/docs)
+- [Embla Carousel](https://www.embla-carousel.com/get-started/)
+- [color2k](https://github.com/ricokahler/color2k)
+- [@vercel/stega](https://www.npmjs.com/package/@vercel/stega)
+- [GROQD](https://commerce.nearform.com/open-source/groqd/)
 
-Now you'll need to pick a host to deploy it to.
+The project is heavily inspired by:
 
-### DIY
+- [Shopify Dawn](https://github.com/Shopify/dawn)
+- [Sanity Akva](https://github.com/sanity-io/demo-ecommerce)
+- [Hydrogen demo store](https://github.com/Shopify/hydrogen-demo-store)
+- [Build UI](https://buildui.com/recipes)
 
-If you're familiar with deploying Node applications, the built-in Remix app server is production-ready.
+## License
 
-Make sure to deploy the output of `npm run build`
-
-- `build/server`
-- `build/client`
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever css framework you prefer. See the [Vite docs on css](https://vitejs.dev/guide/features.html#css) for more information.
+Licensed under the [MIT license](https://github.com/frontvibe/fluid/blob/main/LICENSE.md)

@@ -1,0 +1,69 @@
+html {
+  scroll-behavior: smooth;
+}
+
+.product-media-gallery .product-media-mainblock video {
+  aspect-ratio: 3/2;
+}
+
+.sm-paragraph,
+.sm-paragraph ol,
+.sm-paragraph p,
+.sm-paragraph table,
+.sm-paragraph ul,
+.sm-paragraph li {
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.text-theme-dark {
+  color: #fff !important;
+}
+
+@media (max-width: 935px) {
+  ._1qyxb2ga > div:nth-child(3) > button:nth-child(1) {
+    display: none;
+  }
+
+  .gallery-carousel img {
+    object-fit: contain;
+  }
+}
+
+@media (min-width: 936px) {
+  .w5nxqn0:first-child {
+    display: none;
+  }
+}
+
+#alma-widget-container .alma-payment-plans-container {
+  width: 100%;
+}
+
+.react-datalist-input__textbox {
+  border-radius: 8px;
+  border: 1px solid;
+  padding: 1rem;
+}
+
+.react-datalist-input__listbox {
+  position: absolute;
+  top: -100%;
+  background-color: #ffffff;
+  width: 100%;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  min-height: 70px;
+  max-height: 70px;
+  overflow-y: scroll;
+  border: 1px solid;
+}
+
+
+.shopify-description .sm-paragraph ol ,.shopify-description .sm-paragraph ul {
+  padding: revert-layer;
+  list-style: disc;
+}

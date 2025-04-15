@@ -1,0 +1,1 @@
+export const imageWidthValues = ['full', 'container'] as const;
