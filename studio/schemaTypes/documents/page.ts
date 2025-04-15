@@ -2,8 +2,8 @@ import {defineField, defineType} from 'sanity'
 import {DocumentIcon} from '@sanity/icons'
 
 export const page = defineType({
-  name: 'page',
-  title: 'Page',
+  name: 'pages',
+  title: 'Pages',
   type: 'document',
   icon: DocumentIcon,
   fields: [
