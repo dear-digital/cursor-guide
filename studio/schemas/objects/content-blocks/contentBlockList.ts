@@ -2,12 +2,6 @@ import { defineField, InsertMenuOptions } from 'sanity';
 
 const contentBlocks = [
   {
-    type: 'headlineSection',
-  },
-  {
-    type: 'functionsTabSection',
-  },
-  {
     type: 'bentoBoxSection',
   },
   {
