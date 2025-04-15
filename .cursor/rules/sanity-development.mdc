@@ -6,29 +6,34 @@ alwaysApply: true
 # Component Development Guide
 
 ## Overview
-This guide outlines the complete process of adding a new component to the system, from Sanity schema creation to frontend implementation.
+This guide outlines the complete process of adding a new component to the system, from Sanity schema creation to frontend implementation. **All Sanity component schemas must end in `Section`**, e.g. `heroBannerSection`, `testimonialSection`.
+
+---
 
 ## Step 1: Create Sanity Schema
+
 1. Create a new schema file in the appropriate directory:
    - For content blocks: `studio/schemas/objects/content-blocks/`
    - For hero blocks: `studio/schemas/objects/hero-blocks/`
    - For other components: `studio/schemas/objects/`
+   - Sometimes blocks can be re-used. For example if I need a Headline, you can re-use the headlineBlock() and this also has some queries already. Always look if there is a block that can be re-used.
 
 2. Follow the schema structure:
-```typescript
+
+```ts
 import {defineField, defineType} from 'sanity';
 import {IconName} from 'lucide-react'; // or use Sanity icons
 
 export default defineType({
-  name: 'componentName',
-  title: 'Component Title',
+  name: 'exampleSection',
+  title: 'Example Section',
   type: 'object',
   icon: IconName, // Use appropriate icon
   fields: [
     defineField({
       name: 'title',
       title: 'Title',
-      description: 'The main title of the component',
+      description: 'The main title of the section',
       type: 'string',
     }),
     // Add other fields as needed
@@ -46,13 +51,18 @@ export default defineType({
 });
 ```
 
+> 🔒 **Important**: All schema names **must end in `Section`** (e.g. `faqSection`, `imageGallerySection`).
+
+---
+
 ## Step 2: Add to Lists/Arrays
-1. Add the component to the appropriate list file:
+
+1. Add the new schema to the appropriate list file:
    - For content blocks: `studio/schemas/objects/content-blocks/contentBlockList.ts`
    - For hero blocks: `studio/schemas/objects/hero-blocks/heroBlocksList.ts`
 
-```typescript
-import {componentName} from './componentName';
+```ts
+import {exampleSection} from './exampleSection';
 
 export const contentBlockSections = () => ({
   name: 'contentBlocks',
@@ -60,105 +70,157 @@ export const contentBlockSections = () => ({
   type: 'array',
   of: [
     // ... existing components
-    componentName,
+    exampleSection,
   ],
 });
 ```
 
-## Step 3: Create GROQ Fragment
-1. Create a new fragment file in `app/qroq/content-blocks/` or `app/qroq/hero-blocks/`
-2. Define the fragment following the pattern:
+---
 
-```typescript
+## Re-use blocks
+
+1. If a block can be re-used, add the block to the schema:
+    - Blocks are located at studio/schemas/objects/blocks
+
+```ts
+import headlineBlock from '../blocks/headlineBLock';
+
+export default defineType({
+  name: 'exampleSection',
+  title: 'Example Section',
+  type: 'object',
+  icon: IconName, // Use appropriate icon
+  fields: [
+    headlineBlock(),
+    defineField({
+      name: 'title',
+      title: 'Title',
+      description: 'The main title of the section',
+      type: 'string',
+    }),
+    // Add other fields as needed
+  ],
+  preview: {
+    select: {
+      title: 'title',
+    },
+    prepare({title}) {
+      return {
+        title: title || 'No title',
+      };
+    },
+  },
+});
+```
+
+## Step 3: Create GROQ Fragment
+
+1. Create a new fragment file in `app/qroq/content-blocks/` or `app/qroq/hero-blocks/`
+2. Define the fragment:
+
+```ts
 import {q} from 'groqd';
 
-export const COMPONENT_NAME_FRAGMENT = q('componentName').grab({
-  _type: q.literal('componentName'),
+export const EXAMPLE_SECTION_FRAGMENT = q('exampleSection').grab({
+  _type: q.literal('exampleSection'),
   _key: q.string(),
-  // Add all fields from the schema
   title: q.string(),
   // ... other fields
 });
 ```
 
-3. Add the fragment to the main fragments file:
-```typescript
-import {COMPONENT_NAME_FRAGMENT} from './content-blocks/componentName';
+3. Add it to the main fragment export:
+
+```ts
+import {EXAMPLE_SECTION_FRAGMENT} from './content-blocks/exampleSection';
 
 export const CONTENT_BLOCKS_FRAGMENT = q('contentBlocks[]', {isArray: true}).grab({
   _type: q.string(),
   _key: q.string(),
   // ... other fragments
-  ...COMPONENT_NAME_FRAGMENT,
+  ...EXAMPLE_SECTION_FRAGMENT,
 });
 ```
 
+---
+
 ## Step 4: Create Frontend Component
-1. Create a new component file in the appropriate directory:
+
+1. Create a new React component in the appropriate directory:
    - For content blocks: `app/components/content-blocks/`
    - For hero blocks: `app/components/hero-blocks/`
 
-2. Follow the component structure:
-```typescript
-import type {ComponentNameProps} from '~/types';
+```tsx
+import type {ExampleSectionProps} from '~/types';
 
-export function ComponentName({data}: ComponentNameProps) {
+export function ExampleSection({data}: ExampleSectionProps) {
   return (
     <section className="...">
-      {/* Component implementation */}
+      {/* Component content */}
     </section>
   );
 }
 ```
 
-3. Add the component to the appropriate renderer:
-```typescript
-import {ComponentName} from './content-blocks/ComponentName';
+2. Add to the renderer:
+
+```tsx
+import {ExampleSection} from './content-blocks/ExampleSection';
 
 export function ContentBlockRenderer({data}: ContentBlockRendererProps) {
   switch (data._type) {
-    // ... other cases
-    case 'componentName':
-      return <ComponentName data={data} />;
+    case 'exampleSection':
+      return <ExampleSection data={data} />;
     default:
       return null;
   }
 }
 ```
 
+---
+
 ## Step 5: Type Generation
-1. After adding the schema, run:
+
+After saving the schema, run:
+
 ```bash
 sanity schema extract && sanity typegen generate --enforce-required-fields
 ```
 
+---
+
 ## Best Practices
-1. Always include proper TypeScript types
-2. Follow the established naming conventions
-3. Include proper documentation
-4. Add appropriate icons
-5. Implement proper preview in Sanity
-6. Follow accessibility guidelines
-7. Use Tailwind for styling
-8. Include proper error handling
-9. Add proper SEO considerations
-10. Test the component in both Sanity and the frontend
+
+1. All component schemas **must end in `Section`**
+2. Always include proper TypeScript types
+3. Follow naming conventions (PascalCase for components, camelCase for schema `name`)
+4. Include clear documentation and descriptions
+5. Add a relevant icon for better Sanity UI
+6. Implement a clear preview in Sanity
+7. Use Tailwind CSS for styling
+8. Follow accessibility (a11y) standards
+9. Handle all errors and fallback gracefully
+10. Optimize for SEO where relevant
+11. Test both in the Sanity Studio and the frontend
+
+---
 
 ## Example Component Structure
+
 ```
 studio/
 ├── schemas/
 │   └── objects/
 │       └── content-blocks/
-│           ├── componentName.ts
+│           ├── exampleSection.ts
 │           └── contentBlockList.ts
 app/
 ├── components/
 │   └── content-blocks/
-│       └── ComponentName.tsx
+│       └── ExampleSection.tsx
 ├── qroq/
 │   └── content-blocks/
-│       └── componentName.ts
+│       └── exampleSection.ts
 └── types/
     └── content-blocks.ts
 ```
