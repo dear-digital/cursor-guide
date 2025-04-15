@@ -15,19 +15,28 @@ import videoPartial from './objects/blocks/partials/videoPartial';
 import { sectionSettingsBlock } from './objects/blocks/sectionSettingsBlock';
 import { textBlock } from './objects/blocks/textBaseBlock';
 import { titleBlock } from './objects/blocks/titleBlock';
+import orderFormSection from './objects/content-blocks/orderFormSection';
 import bentoBoxSection from './objects/content-blocks/bentoBoxSection';
 import sectionsList, {
   collectionSections,
   productSections,
 } from './objects/content-blocks/contentBlockList';
 import contentBlockSection from './objects/content-blocks/contentBlockSection';
+import downloadsSection from './objects/content-blocks/downloadsSection';
+import faqSection from './objects/content-blocks/faqSection';
 import featuredCardsSection from './objects/content-blocks/featuredCardsSection';
+import fullWidthImage from './objects/content-blocks/fullWidthImageSection';
 import functionsTabSection from './objects/content-blocks/functionsTabSection';
+import galleryCarouselSection from './objects/content-blocks/galleryCarouselSection';
+import headlineSection from './objects/content-blocks/headlineSection';
 import imageCarouselSection from './objects/content-blocks/imageCarouselSection';
+import imageTextCarouselSection from './objects/content-blocks/imageTextCarouselSection';
 import mediaContainerSection from './objects/content-blocks/mediaContainerSection';
+import multiColumnSection from './objects/content-blocks/multiColumnSection';
 import productBlockSection from './objects/content-blocks/productBlockSection';
 import productInformationSection from './objects/content-blocks/productInformationSection';
 import richtextSection from './objects/content-blocks/richtextSection';
+import scrollRowSection from './objects/content-blocks/scrollRowSection';
 import textImageSection from './objects/content-blocks/textImageSection';
 import textSection from './objects/content-blocks/textSection';
 import collectionBanner from './objects/content-blocks/collectionBanner';
@@ -69,9 +78,11 @@ import relatedProductsSection from './objects/content-blocks/relatedProductsSect
 import { stickyProductBar } from './objects/blocks/stickyProductBar';
 import bentoCarouselSection from './objects/content-blocks/bentoCarouselSection';
 import { mediaContainerBlock } from './objects/blocks/mediaContainerBlock';
+import mediaContainerCarouselSection from './objects/content-blocks/mediaContainerCarouselSection';
 import { videoResponsiveLocalizedBlock } from './objects/blocks/videoLocalizedBlock';
 import { imageResponsiveLocalizedBlock } from './objects/blocks/imageLocalizedBlock';
 import dropdownSection from './objects/content-blocks/dropdownSection';
+import sectionNavigatorSection from './objects/content-blocks/sectionNavigatorSection';
 
 const singletons = [home, header, footer, settings, themeContent];
 const documents = [
@@ -86,8 +97,17 @@ const documents = [
 ];
 const contentBlocks = [
   dropdownSection,
+  faqSection,
   featuredCardsSection,
+  multiColumnSection,
+  fullWidthImage,
+  scrollRowSection,
+  headlineSection,
+  functionsTabSection,
+  galleryCarouselSection,
   mediaContainerSection,
+  mediaContainerCarouselSection,
+  sectionNavigatorSection,
   bentoBoxSection,
   bentoCarouselSection,
   contentBlockSection,
@@ -95,6 +115,8 @@ const contentBlocks = [
   relatedProductsSection,
   richtextSection,
   textImageSection,
+  imageTextCarouselSection,
+  orderFormSection,
   imageCarouselSection,
   textSection,
   productBlockSection,
@@ -124,6 +146,7 @@ const objects = [
   richTitle,
   collectionSections,
   collectionProductGrid,
+  downloadsSection,
   productRichtext,
   sectionSettings,
   inventory,

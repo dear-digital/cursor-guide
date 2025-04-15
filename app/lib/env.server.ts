@@ -5,21 +5,6 @@
 
 import type {AppLoadContext} from '@shopify/remix-oxygen';
 
-interface Env {
-  NODE_ENV: string;
-  PRIVATE_SHOPIFY_ACCESS_TOKEN: string;
-  PRIVATE_SHOPIFY_STORE: string;
-  PRIVATE_UPPROMOTE_API_KEY: string;
-  PUBLIC_GOOGLE_MAPS_API_KEY: string;
-  SANITY_STUDIO_API_VERSION: string;
-  SANITY_STUDIO_DATASET: string;
-  SANITY_STUDIO_PROJECT_ID: string;
-  SANITY_STUDIO_SHOPIFY_SHOP_HANDLE: string;
-  SANITY_STUDIO_TOKEN: string;
-  SANITY_STUDIO_URL: string;
-  SANITY_STUDIO_USE_PREVIEW_MODE: string;
-}
-
 export function envVariables(contextEnv: Env) {
   let env: Env | NodeJS.ProcessEnv = contextEnv;
 
@@ -29,24 +14,9 @@ export function envVariables(contextEnv: Env) {
   }
 
   return {
+    GOOGLE_TAG_MANAGER: env.GOOGLE_TAG_MANAGER || '',
     NODE_ENV: env.NODE_ENV as AppLoadContext['env']['NODE_ENV'],
-    PRIVATE_SHOPIFY_ACCESS_TOKEN: checkRequiredEnv(
-      env.PRIVATE_SHOPIFY_ACCESS_TOKEN,
-      'PRIVATE_SHOPIFY_ACCESS_TOKEN',
-    ),
-    PRIVATE_SHOPIFY_STORE: checkRequiredEnv(
-      env.PRIVATE_SHOPIFY_STORE,
-      'PRIVATE_SHOPIFY_STORE',
-    ),
-    PRIVATE_UPPROMOTE_API_KEY: checkRequiredEnv(
-      env.PRIVATE_UPPROMOTE_API_KEY,
-      'PRIVATE_UPPROMOTE_API_KEY',
-    ),
-    PUBLIC_GOOGLE_MAPS_API_KEY: checkRequiredEnv(
-      env.PUBLIC_GOOGLE_MAPS_API_KEY,
-      'PUBLIC_GOOGLE_MAPS_API_KEY',
-    ),
-    SANITY_STUDIO_API_VERSION: env.SANITY_STUDIO_API_VERSION || '2024-10-01',
+    SANITY_STUDIO_API_VERSION: env.SANITY_STUDIO_API_VERSION || '2024-05-01',
     SANITY_STUDIO_DATASET: checkRequiredEnv(
       env.SANITY_STUDIO_DATASET,
       'SANITY_STUDIO_DATASET',
@@ -54,10 +24,6 @@ export function envVariables(contextEnv: Env) {
     SANITY_STUDIO_PROJECT_ID: checkRequiredEnv(
       env.SANITY_STUDIO_PROJECT_ID,
       'SANITY_STUDIO_PROJECT_ID',
-    ),
-    SANITY_STUDIO_SHOPIFY_SHOP_HANDLE: checkRequiredEnv(
-      env.SANITY_STUDIO_SHOPIFY_SHOP_HANDLE,
-      'SANITY_STUDIO_SHOPIFY_SHOP_HANDLE',
     ),
     SANITY_STUDIO_TOKEN: checkRequiredEnv(
       env.SANITY_STUDIO_TOKEN,
@@ -68,7 +34,8 @@ export function envVariables(contextEnv: Env) {
       'SANITY_STUDIO_URL',
     ),
     SANITY_STUDIO_USE_PREVIEW_MODE:
-      env.SANITY_STUDIO_USE_PREVIEW_MODE || 'true',
+      env.SANITY_STUDIO_USE_PREVIEW_MODE || 'false',
+    SESSION_SECRET: env.SESSION_SECRET || '',
   };
 }
 

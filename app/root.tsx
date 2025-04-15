@@ -70,14 +70,6 @@ export const shouldRevalidate: ShouldRevalidateFunction = ({
 
 export function links() {
   return [
-    {
-      href: 'https://cdn.shopify.com',
-      rel: 'preconnect',
-    },
-    {
-      href: 'https://shop.app',
-      rel: 'preconnect',
-    },
     {href: tailwindCss, rel: 'stylesheet'},
     {href: SwiperCss, rel: 'stylesheet'},
     {href: swiperCss, rel: 'stylesheet'},
@@ -169,8 +161,8 @@ export async function loader({context, request}: LoaderFunctionArgs) {
     },
     env: {
       /*
-      * Be careful not to expose any sensitive environment variables here.
-      */
+       * Be careful not to expose any sensitive environment variables here.
+       */
       GOOGLE_TAG_MANAGER: env.GOOGLE_TAG_MANAGER,
       NODE_ENV: env.NODE_ENV,
       PUBLIC_GOOGLE_MAPS_API_KEY: env.PUBLIC_GOOGLE_MAPS_API_KEY,
@@ -197,27 +189,10 @@ export async function loader({context, request}: LoaderFunctionArgs) {
   });
 }
 
-function ZendeskWidget() {
-  const nonce = useNonce();
-  
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.id = 'ze-snippet';
-    script.src = 'https://static.zdassets.com/ekr/snippet.js?key=449a2139-a9d6-47c3-8924-72cdb27a048d';
-    if (nonce) {
-      script.setAttribute('nonce', nonce);
-    }
-    document.head.appendChild(script);
-  }, [nonce]);
-  
-  return null;
-}
-
 export default function App() {
   const nonce = useNonce();
   const {locale} = useRootLoaderData();
   const data = useLoaderData<typeof loader>();
-  const GoogleTagManagerId = data.env.GOOGLE_TAG_MANAGER;
 
   return (
     <html lang={locale.language.toLowerCase()}>
@@ -230,46 +205,11 @@ export default function App() {
         <CssVars />
       </head>
       <body className="flex min-h-screen flex-col overflow-x-hidden bg-background text-foreground">
-        <noscript>
-          <iframe
-            height="0"
-            nonce="nonce"
-            src={
-              'https://www.googletagmanager.com/ns.html?id=' +
-              GoogleTagManagerId
-            }
-            style={{display: 'none', visibility: 'hidden'}}
-            title="Google Tag Manager"
-            width="0"
-          ></iframe>
-        </noscript>
-        <Analytics.Provider
-          cart={data.cart}
-          consent={data.consent}
-          shop={data.shop}
-        >
-          <Await resolve={data.cart}>
-            {(cart) => (
-              <Uppromote
-                cart={cart}
-                publicStoreDomain={'vorwerk-benelux'}
-                publicStorefrontApiToken={data.env.PUBLIC_STOREFRONT_API_TOKEN}
-                publicStorefrontApiVersion={
-                  data.env.PUBLIC_STOREFRONT_API_VERSION
-                }
-              />
-            )}
-          </Await>
-          <ParallaxProvider>
-            <Layout>
-              <Outlet />
-            </Layout>
-          </ParallaxProvider>
-          <CustomAnalytics />
-          <UppromoteAffiliates />
-          <GoogleTagManager gtmId={GoogleTagManagerId} />
-          <ZendeskWidget />
-        </Analytics.Provider>
+        <ParallaxProvider>
+          <Layout>
+            <Outlet />
+          </Layout>
+        </ParallaxProvider>
         <ScrollRestoration nonce={nonce} />
         <Scripts nonce={nonce} />
         <LiveReload nonce={nonce} />
@@ -330,7 +270,6 @@ export function ErrorBoundary() {
             </div>
           </section>
         </Layout>
-        <ZendeskWidget />
         <ScrollRestoration nonce={nonce} />
         <Scripts nonce={nonce} />
         <LiveReload nonce={nonce} />

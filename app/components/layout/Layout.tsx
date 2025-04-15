@@ -17,22 +17,14 @@ export function Layout({children = null}: LayoutProps) {
   const {env, locale, sanityPreviewMode} = useRootLoaderData();
 
   return (
-    <ShopifyProvider
-      countryIsoCode={locale.country || 'US'}
-      languageIsoCode={locale.language || 'EN'}
-      storeDomain={env.PUBLIC_STORE_DOMAIN}
-      storefrontApiVersion={env.PUBLIC_STOREFRONT_API_VERSION}
-      storefrontToken={env.PUBLIC_STOREFRONT_API_TOKEN}
-    >
-      <FramerMotion>
-        <NavigationProgressBar />
-        <Header />
-        <main className="flex min-h-[90vh] grow flex-col gap-y-[calc(var(--space-between-template-sections)*.75)] sm:gap-y-[--space-between-template-sections]">
-          {children}
-        </main>
-        <Footer />
-        {sanityPreviewMode ? <VisualEditing /> : <TogglePreviewMode />}
-      </FramerMotion>
-    </ShopifyProvider>
+    <FramerMotion>
+      <NavigationProgressBar />
+      <Header />
+      <main className="flex min-h-[90vh] grow flex-col gap-y-[calc(var(--space-between-template-sections)*.75)] sm:gap-y-[--space-between-template-sections]">
+        {children}
+      </main>
+      {/* <Footer /> */}
+      {sanityPreviewMode ? <VisualEditing /> : <TogglePreviewMode />}
+    </FramerMotion>
   );
 }
